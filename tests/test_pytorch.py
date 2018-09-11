@@ -19,8 +19,7 @@ class TestPyTorch(unittest.TestCase):
     def test_gpu(self):
         cuda = torch.device('cuda')  
         a = torch.tensor([1., 2.], device=cuda)
-        b = torch.tensor([3., 4.], device=cuda) 
 
-        result = a + b
+        result = a.sum()
 
-        self.assertEqual(torch.tensor([4., 6.], device=cuda), result)
+        self.assertEqual(torch.tensor([3.], device=cuda), result)
