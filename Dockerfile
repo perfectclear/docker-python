@@ -499,9 +499,7 @@ RUN pip install flashtext && \
     pip install trackml && \
     pip install tensorflow_hub && \
     pip install PDPbox && \
-    pip install gatspy && \
     pip install cesium && \
-    pip install schwimmbad && \
     ##### ^^^^ Add new contributions above here ^^^^ #####
     # clean up pip cache
     rm -rf /root/.cache/pip/*
