@@ -32,6 +32,9 @@ RUN pip install seaborn python-dateutil dask pytagcloud pyyaml joblib \
     # clean up ImageMagick source files
     cd ../ && rm -rf ImageMagick*
 
+# OpenCV install (from pip or source)
+RUN pip install opencv-python
+
 RUN apt-get update && apt-get install -y python-software-properties zip && \
     echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | tee -a /etc/apt/sources.list && \
     echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | tee -a /etc/apt/sources.list && \
@@ -141,6 +144,8 @@ ENV LD_LIBRARY_PATH=/opt/conda/lib
 
 # Install Basemap via conda temporarily
 RUN apt-get -y install zlib1g-dev liblcms2-dev libwebp-dev libgeos-dev && \
+     # Pillow is an optional dependency of basemap
+    pip install Pillow && \
     pip install matplotlib && \
     pip install pyshp && \
     pip install pyproj && \
@@ -494,7 +499,7 @@ RUN pip install flashtext && \
     pip install trackml && \
     pip install tensorflow_hub && \
     pip install PDPbox && \
-    pip install ggplot && \
+    pip install cesium && \
     ##### ^^^^ Add new contributions above here ^^^^ #####
     # clean up pip cache
     rm -rf /root/.cache/pip/*
